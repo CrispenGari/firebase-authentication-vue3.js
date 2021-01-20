@@ -1,26 +1,52 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <div class="app__main" v-if="!user">
+      <Authentication />
+    </div>
+    <div class="app__main" v-else>
+      <Header />
+      <Home :user="user" />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { Home, Authentication } from "./views";
+import { Header } from "./components";
+import { auth } from "./utils/firebase";
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      user: null,
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    Home,
+    Authentication,
+    Header,
+  },
+  mounted() {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        this.user = authUser;
+      } else {
+        this.user = null;
+      }
+    });
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+.app__main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 </style>
