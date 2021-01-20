@@ -13,7 +13,7 @@ This is a simple application that allows authentication for different auth provi
 
 ### Demo
 
-![alt-text](https://github.com/CrispenGari/firebase-authentication-vue3.js/blob/main/bandicam%202021-01-20%2021-19-30-599.jpg)
+![alt-text](https://github.com/CrispenGari/firebase-authentication-vue3.js/blob/main/bandicam%202021-01-20%2021-19-35-165.jpg)
 
 ![alt-text](https://github.com/CrispenGari/firebase-authentication-vue3.js/blob/main/bandicam%202021-01-20%2021-19-30-599.jpg)
 ## Project setup
